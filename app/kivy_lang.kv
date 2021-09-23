@@ -1,2 +1,27 @@
-<FloatBuild>:
-    
+<EntryPoint>:
+    IntroScreen:
+        name:'intro_screen'
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDToolbar:
+                title:'Navigation-Rail'
+            MDBoxLayout:
+                orientation:'vertical'
+                MDNavigationRail:
+                    use_hover_behavior: True
+                    hover_bg: 0, 0, 0, .2
+                    id:nav_rail
+                    Rail:
+                        text:'Python'
+                        icon:'language-python'
+                    Rail:
+                        text:'Java'
+                        icon:'language-java'
+                    Rail:
+                        text:'C#'
+                        icon:'language-csharp'
+                    Rail:
+                        text:'C++'
+                        icon:'language-cpp'
+
+<Rail@MDNavigationRailItem>
