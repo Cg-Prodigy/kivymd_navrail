@@ -1,27 +1,44 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
 <EntryPoint>:
     IntroScreen:
-        name:'intro_screen'
         MDBoxLayout:
             orientation: 'vertical'
             MDToolbar:
-                title:'Navigation-Rail'
+                id:top_bar
+                title:'Navigation Rail'
+                md_bg_color:.3,.3,.3,1
             MDBoxLayout:
-                orientation:'vertical'
+                orientation:'horizontal'
                 MDNavigationRail:
-                    use_hover_behavior: True
-                    hover_bg: 0, 0, 0, .2
                     id:nav_rail
-                    Rail:
-                        text:'Python'
+                    md_bg_color:[.5,.5,.5,1]
+                    use_resizeable:True
+                    use_action_button:True
+                    on_action_button:root.open_rail()
+                    action_icon_button:'plus-circle-multiple-outline'
+                    action_color_button:get_color_from_hex('#ff4500')
+                    use_hover_behavior:True
+                    hover_bg:0,0,0,.3
+                    visible:'Persistent'
+                    MDNavigationRailItem:
+                        text:'python'
                         icon:'language-python'
-                    Rail:
+                        on_enter:root.set_item_color(self)
+                    MDNavigationRailItem:
                         text:'Java'
                         icon:'language-java'
-                    Rail:
-                        text:'C#'
-                        icon:'language-csharp'
-                    Rail:
-                        text:'C++'
-                        icon:'language-cpp'
+                        on_enter:root.set_item_color(self)
+                MDGridLayout:
+                    cols:3
+                    spacing:dp(5)
+                    padding:[dp(5),0,0,0]
+                    Card
+                    Card:
+                    Card:
 
-<Rail@MDNavigationRailItem>
+
+<Card@MDCard>:
+    elevation:10
+    md_bg_color:.4,.4,.4,1
+    size_hint:.9,None
+    height:dp(300)
